@@ -120,8 +120,7 @@ with st.sidebar:
 @st.cache(suppress_st_warning=True)
 def scrape_tweets_for_user(topic, username, since, until):
     tweets_list1 = []
-    topics_list = topic.split(',')
-    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(f"{topics_list} from:{username} since:{since} until:{until}").get_items()):
+    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(f"{topic} from:{username} since:{since} until:{until}").get_items()):
         if i>100:
             break
         tweets_list1.append([tweet.url,
@@ -134,9 +133,8 @@ def scrape_tweets_for_user(topic, username, since, until):
 
 def scraper(parole, users, since, until):
     tweets_list1 = []
-    topics_list = parole.split(',')  # split the topics string into a list of keywords
     with concurrent.futures.ProcessPoolExecutor(30) as executor:
-        results = [executor.submit(scrape_tweets_for_user, topics_list, n, since, until) for p in topics_list for n in users]
+        results = [executor.submit(scrape_tweets_for_user, parole, n, since, until) for p in topics_list for n in users]
         for future in concurrent.futures.as_completed(results):
             tweets_list1.extend(future.result())
 
@@ -173,7 +171,7 @@ until = "2022-12-29"
 
 list_of_parole = ['Fondazione De Gasperi', 'Lorenzo Malagola']
 if submit_button:
-    scraper(topics, selected_usernames, start_date, end_date)
+    scraper(topics.split(''), selected_usernames, start_date, end_date)
 
 
 #if governo_button:
