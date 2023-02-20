@@ -9,6 +9,9 @@ import xlsxwriter
 from io import BytesIO
 
 
+url = 'https://github.com/nicolorosso/prova/blob/main/Parlamento_sito_ADL.xlsx'
+myfile = requests.get(url)
+
 import concurrent.futures
 
 # Load the Italian language model
@@ -45,8 +48,8 @@ col1.header('Opzioni Ricerca')
 
 
 ## Sidebar
-account = pd.read_excel(r"C:\Users\nickr\OneDrive\Desktop\ADL\Parlamento_sito_ADL.xlsx", sheet_name= 'STAKEHOLDER')
-governo= pd.read_excel(r'C:\Users\nickr\Downloads\account_governo_twitter.xlsx', sheet_name = 'Sheet1')
+account = pd.read_excel(myfile.content))
+#governo= pd.read_excel(r'C:\Users\nickr\Downloads\account_governo_twitter.xlsx', sheet_name = 'Sheet1')
 
 account['username'] = account['LINK PAGINA TWITTER'].str.split('/').str[-1]
 account['username'] = account['username'].str.split('?').str[0]
@@ -54,8 +57,8 @@ account = account.dropna(subset=['username'])
 account['nome_cognome'] = account['NOME'].str.cat(account['COGNOME'], sep=' ')
 account = account.reset_index()
 
-governo['LINK PAGINA TWITTER'] = governo['LINK PAGINA TWITTER'].str.split('/').str[-1]
-governo['LINK PAGINA TWITTER'] = governo['LINK PAGINA TWITTER'].str.split('?').str[0]
+#governo['LINK PAGINA TWITTER'] = governo['LINK PAGINA TWITTER'].str.split('/').str[-1]
+#governo['LINK PAGINA TWITTER'] = governo['LINK PAGINA TWITTER'].str.split('?').str[0]
 
 
 start_date = st.sidebar.date_input("Start date", datetime.date(2013, 1, 1))
