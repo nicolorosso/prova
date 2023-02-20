@@ -171,7 +171,7 @@ until = "2022-12-29"
 
 list_of_parole = ['Fondazione De Gasperi', 'Lorenzo Malagola']
 if submit_button:
-    scraper(topics.split(''), selected_usernames, start_date, end_date)
+    scraper(topics.split(','), selected_usernames, start_date, end_date)
 
 
 #if governo_button:
