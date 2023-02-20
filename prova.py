@@ -120,7 +120,8 @@ with st.sidebar:
 @st.cache(suppress_st_warning=True)
 def scrape_tweets_for_user(topic, username, since, until):
     tweets_list1 = []
-    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(f"{topic} from:{username} since:{since} until:{until}").get_items()):
+    topics_list = topic.split(',')
+    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(f"{topics_list} from:{username} since:{since} until:{until}").get_items()):
         if i>100:
             break
         tweets_list1.append([tweet.url,
