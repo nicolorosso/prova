@@ -7,6 +7,7 @@ import datetime
 import re
 import xlsxwriter
 from io import BytesIO
+import requests
 
 
 url = 'https://github.com/nicolorosso/prova/blob/main/Parlamento_sito_ADL.xlsx'
