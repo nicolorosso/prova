@@ -136,7 +136,7 @@ def scraper(parole, users, since, until):
     topics_list = parole.split(',')  # split the topics string into a list of keywords
     tweets_list1 = []
     with concurrent.futures.ProcessPoolExecutor(30) as executor:
-        results = [executor.submit(scrape_tweets_for_user, topics_list, n, since, until) for n in users]
+        results = [executor.submit(scrape_tweets_for_user, topics_list, n, since, until) for p in topics_list for n in users]
         for future in concurrent.futures.as_completed(results):
             tweets_list1.extend(future.result())
 
