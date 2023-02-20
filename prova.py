@@ -86,7 +86,8 @@ select_all = st.sidebar.checkbox("Seleziona tutti")
 # Use nome_cognome as the options for the multiselect
 if select_all:
     selected_options = account.index.tolist()
-    selected_usernames = account.loc[selected_options, 'username'].tolist()
+    selected_usernames = account.loc[selected_options, 'username']
+    selected_usernames = selected_usernames[selected_usernames != ''].tolist()
 else:
     selected_options = st.sidebar.multiselect(
         "Seleziona uno o più Stakeholder:",
@@ -170,7 +171,7 @@ until = "2022-12-29"
 
 list_of_parole = ['Fondazione De Gasperi', 'Lorenzo Malagola']
 if submit_button:
-    scraper(topics, selected_options, start_date, end_date)
+    scraper(topics, selected_usernames, start_date, end_date)
 
 
 #if governo_button:
