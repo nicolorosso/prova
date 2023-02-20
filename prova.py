@@ -98,7 +98,6 @@ else:
 # Get the corresponding usernames for the selected options
 #selected_usernames = account.loc[selected_options, 'username'].tolist()
 topics = st.sidebar.text_input('Scrivere le parole chiave separate da una virgola:', "")
-keywords_list = [kw.strip() for kw in topics.split(',')]  # create list of keywords
 
 
 numero = st.sidebar.slider('Numero di Tweet', 10, 100, 100)
@@ -176,7 +175,7 @@ if submit_button:
 
 
 #if governo_button:
-    #scrape_tweets(keywords_list, users, selected_options, start_date, end_date, governo_button)
+    #scrape_tweets(topics, users, selected_options, start_date, end_date, governo_button)
 
 
 
