@@ -1,4 +1,4 @@
-#import openpyxl
+import openpyxl
 import pandas as pd
 import snscrape.modules.twitter as sntwitter
 #import spacy
@@ -50,7 +50,7 @@ col1.header('Opzioni Ricerca')
 
 ## Sidebar
 account = pd.read_excel(myfile.content)
-#governo= pd.read_excel(r'C:\Users\nickr\Downloads\account_governo_twitter.xlsx', sheet_name = 'Sheet1')
+#governo= pd.read_excel(r'C:\Users\nickr\Downloads\account_governo_twitter.xlsx', sheet_name = 'Sheet1', engine='openpyxl')
 
 account['username'] = account['LINK PAGINA TWITTER'].str.split('/').str[-1]
 account['username'] = account['username'].str.split('?').str[0]
