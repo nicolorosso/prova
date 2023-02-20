@@ -48,7 +48,7 @@ col1.header('Opzioni Ricerca')
 
 
 ## Sidebar
-account = pd.read_excel(myfile.content))
+account = pd.read_excel(myfile.content)
 #governo= pd.read_excel(r'C:\Users\nickr\Downloads\account_governo_twitter.xlsx', sheet_name = 'Sheet1')
 
 account['username'] = account['LINK PAGINA TWITTER'].str.split('/').str[-1]
