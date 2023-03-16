@@ -133,7 +133,7 @@ def scraper(parole, users, since, until):
                                               'Text',
                                               'URL'
                                               ])
-    df['URL'] = df['URL'] + ' '
+   
     
     if df.empty:
         st.error("Non sono stati trovati Tweet con le parole chiave selezionate!", icon="🚨")
