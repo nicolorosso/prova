@@ -30,8 +30,9 @@ Questa app offre la possibilità di monitorare i tweet più rilevanti!
 # About
 expander_bar = st.expander("Come usare l'app")
 expander_bar.markdown("""
+
 1. Seleziona la data di inizio e fine ricerca 
-2. Inserisci i nomi utenti per la ricerca (Luigi Marattin diventa marattin)
+2. Seleziona uno o più stakeholder dal menù a tendina o clicca su 'Seleziona Tutti' per una ricerca completa
 3. Inserisci le parole chiave per la tua ricerca
 4. Premi il tasto invio
 """)
@@ -116,7 +117,6 @@ def scrape_tweets_for_user(topic, username, since, until):
         tweets_list1.append([tweet.user.displayname,
                             tweet.date,
                             tweet.rawContent,
-                             tweet.id,
                             tweet.url
                               ])
     return tweets_list1
@@ -131,9 +131,10 @@ def scraper(parole, users, since, until):
     df = pd.DataFrame(tweets_list1, columns=['Nome Utente',
                                               'Data',
                                               'Text',
-                                             'Tweet ID',
                                               'URL'
                                               ])
+    df['URL'] = df['URL'] + ' '
+    
     if df.empty:
         st.error("Non sono stati trovati Tweet con le parole chiave selezionate!", icon="🚨")
     else:
