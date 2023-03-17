@@ -63,7 +63,7 @@ account = account.reset_index()
 #governo['LINK PAGINA TWITTER'] = governo['LINK PAGINA TWITTER'].str.split('?').str[0]
 
 
-start_date = st.sidebar.date_input("Start date", datetime.datetime(2013, 7, 6)))
+start_date = st.sidebar.date_input("Start date", datetime.datetime(2013, 7, 6))
 start_date = str(start_date)
 end_date = st.sidebar.date_input("End date", datetime.datetime(2030, 7, 6))
 end_date = str(end_date)
